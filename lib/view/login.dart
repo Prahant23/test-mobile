@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
                       children: [
                         // Small Logo
                         Image.asset(
-                          'images/fashion.JPG',
+                          'assets/images/fashion.jpg',
                           width: 300,
                           height: 150,
                         ),

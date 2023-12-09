@@ -33,7 +33,7 @@ class RegisterPage extends StatelessWidget {
                       children: [
                         // Small Logo in Top Right Corner
                         Image.asset(
-                          'images/fashion.JPG',
+                          'assets/images/fashion.jpg',
                           width: 150,
                           height: 150,
                         ),

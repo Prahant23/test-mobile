@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       home: const SplashScreen(),
       routes: {
         MyRoutes.loginRoute: (context) => const LoginPage(),
-        MyRoutes.homeRoute: (context) => const VintageStoreHomePage(),
+        MyRoutes.homeRoute: (context) => const DashBoardViewss(),
         MyRoutes.signupRoute: (context) => const RegisterPage(),
       },
     );
