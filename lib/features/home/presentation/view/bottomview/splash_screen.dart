@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:vintuff_thrift/view/login.dart';
+import 'package:vintuff_thrift/features/home/presentation/view/bottomview/login.dart';
 
 void main() {
   runApp(const SplashScreen());

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vintuff_thrift/view/dashboard.dart';
-import 'package:vintuff_thrift/view/login.dart';
-import 'package:vintuff_thrift/view/registration.dart';
-import 'package:vintuff_thrift/view/splash_screen.dart';
+import 'package:vintuff_thrift/features/home/presentation/view/bottomview/dashboard.dart';
+import 'package:vintuff_thrift/features/home/presentation/view/bottomview/login.dart';
+import 'package:vintuff_thrift/features/home/presentation/view/bottomview/registration.dart';
+import 'package:vintuff_thrift/features/home/presentation/view/bottomview/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
