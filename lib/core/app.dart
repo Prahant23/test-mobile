@@ -1,29 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:vintuff_thrift/features/home/presentation/view/bottomview/dashboard.dart';
-import 'package:vintuff_thrift/features/home/presentation/view/bottomview/login.dart';
-import 'package:vintuff_thrift/features/home/presentation/view/bottomview/registration.dart';
-import 'package:vintuff_thrift/features/home/presentation/view/bottomview/splash_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vintuff_thrift/config/routes/app_route.dart';
+import 'package:vintuff_thrift/config/theme/theme_dark.dart';
+import 'package:vintuff_thrift/config/theme/theme_light.dart';
 
-class MyApp extends StatelessWidget {
+
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+   @override
+  Widget build(BuildContext context,WidgetRef ref) {
     return MaterialApp(
-      title: 'Vintuff',
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
-      routes: {
-        MyRoutes.loginRoute: (context) => const LoginPage(),
-        MyRoutes.homeRoute: (context) => const DashBoardViewss(),
-        MyRoutes.signupRoute: (context) => const RegisterPage(),
-      },
+      title: 'Screen',
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      initialRoute: AppRoute.splashRoute,
+      routes: AppRoute.getApplicationRoute(),
     );
   }
 }
 
-class MyRoutes {
-  static String homeRoute = "/homepage";
-  static String loginRoute = "/loginpage";
-  static String signupRoute = "/signuppage";
-}
