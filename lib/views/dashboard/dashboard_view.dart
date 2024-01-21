@@ -29,7 +29,7 @@ class _DashboardViewState extends State<DashboardView> {
               icon: Icons.favorite_outline,
               title: 'favorite'),
           PandaBarButtonData(
-              id: 'Profile', icon: Icons.people, title: 'Profile'),
+              id: 'Profile', icon: Icons.people, title: 'messages'),
         ],
         onChange: (id) {
           setState(() {
@@ -44,11 +44,11 @@ class _DashboardViewState extends State<DashboardView> {
             case 'Home':
               return const HomePage();
             case 'Add to Cart':
-              return const DashboardMessage();
+              return DashboardMessage();
             case 'Notification':
               return const DashboardNoitification();
             case 'Profile':
-              return const DashboardProfile();
+              return const MyProfile();
             default:
               return const HomePage();
           }

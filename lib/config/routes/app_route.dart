@@ -1,4 +1,3 @@
-import 'package:vintuff_thrift/feature/auth/presentation/view/forgotpassword_view.dart';
 import 'package:vintuff_thrift/feature/auth/presentation/view/loginpage_view.dart';
 import 'package:vintuff_thrift/feature/auth/presentation/view/signup_view.dart';
 import 'package:vintuff_thrift/feature/splash/presentation/view/splash_view.dart';
@@ -18,7 +17,7 @@ class AppRoute {
       loginRoute: (context) => const LoginPageView(),
       signupRoute: (context) => const SignupView(),
       dashboardRoute: (context) => const DashboardView(),
-      forgotpasswordRoute: (context) => const ForgotPasswordView(),
+      // forgotpasswordRoute: (context) => const forgetpassword(),
     };
   }
 }
