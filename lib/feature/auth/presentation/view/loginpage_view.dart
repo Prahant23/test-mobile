@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vintuff_thrift/feature/auth/presentation/view_model/auth_viewmodel.dart';
 
 class LoginPageView extends ConsumerStatefulWidget {
   const LoginPageView({Key? key}) : super(key: key);
@@ -88,7 +89,7 @@ class _LoginPageViewState extends ConsumerState<LoginPageView> {
                           )),
                       validator: (value) {
                         if (value == "") {
-                          return "password hannai parcha";
+                          return "Please enter your password";
                         }
                         return null;
                       },
@@ -107,8 +108,13 @@ class _LoginPageViewState extends ConsumerState<LoginPageView> {
                             const Color.fromRGBO(84, 175, 230, 1)),
                         // Replace 'red' with 'Colors.red'
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/dashboard');
+                      onPressed: () async {
+                        {
+                          await ref
+                              .read(authViewModelProvider.notifier)
+                              .loginStaff(emailController.text,
+                                  passwordController.text, context);
+                        }
                       },
                       child: const Text("Login"),
                     ),

@@ -35,13 +35,12 @@ class AuthLocalDataSource {
     }
   }
 
-  Future<Either<Failure, bool>> loginUser(
-      String username, String password) async {
+  Future<Either<Failure, bool>> loginUser(String email, String password) async {
     try {
       final response = await dio.post(
         ApiEndpoints.login,
         data: {
-          'username': username,
+          'email': email,
           'password': password,
         },
       );
