@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vintuff_thrift/feature/auth/presentation/view/loginpage_view.dart';
+import 'package:vintuff_thrift/feature/product/presentation/view_model/product_viewmodel.dart';
 // Import your login screen file
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +58,9 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ref.read(productViewModelProvider.notifier).resetState();
+                  },
                   child: Text("All"),
                 ),
                 ElevatedButton(
@@ -81,6 +85,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+
             CarouselSlider(
               items: [
                 Image.asset('assets/images/tshirt.jpg',
