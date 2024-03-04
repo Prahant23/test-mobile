@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vintuff_thrift/feature/cart/presentation/view_model/cart_view_model.dart';
 import 'package:vintuff_thrift/views/dashboard/dashboard_home.dart';
 import 'package:vintuff_thrift/views/dashboard/dashboard_search.dart';
 import 'package:vintuff_thrift/views/dashboard/dashboard_profile.dart';
 
-class CartView extends StatefulWidget {
+class CartView extends ConsumerStatefulWidget {
   const CartView({Key? key}) : super(key: key);
 
   @override
-  State<CartView> createState() => _CartViewState();
+  ConsumerState<CartView> createState() => _CartViewState();
 }
 
-class _CartViewState extends State<CartView> {
+class _CartViewState extends ConsumerState<CartView> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -29,7 +31,9 @@ class _CartViewState extends State<CartView> {
           ),
           SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              ref.watch(cartViewModelProvider);
+            },
             child: Text('Continue Shopping'),
           ),
         ],
