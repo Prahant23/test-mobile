@@ -66,6 +66,7 @@ dependencies:
   awesome_dio_interceptor: ^1.0.0
   image_picker: ^1.0.6
   permission_handler: ^11.1.0
+  all_sensors2: ^1.0.1
 
 dev_dependencies:
   flutter_test:

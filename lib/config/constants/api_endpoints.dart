@@ -11,4 +11,5 @@ class ApiEndpoints {
   static const String register = "user/create";
   static const String getproduct = "product/getProduct";
   static const String getcart = "cart";
+  static const String getprofile = "user/getUsers";
 }
