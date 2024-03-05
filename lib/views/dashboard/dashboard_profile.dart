@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:vintuff_thrift/feature/profile/data/data_source/profile_remote_datasouce.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyProfile extends StatefulWidget {
+class MyProfile extends ConsumerStatefulWidget {
   const MyProfile({Key? key}) : super(key: key);
 
   @override
   _MyProfileScreenState createState() => _MyProfileScreenState();
 }
 
-class _MyProfileScreenState extends State<MyProfile> {
+class _MyProfileScreenState extends ConsumerState<MyProfile> {
   final ScrollController _scrollController = ScrollController();
   bool _isEditing = false;
 
@@ -77,18 +79,10 @@ class _MyProfileScreenState extends State<MyProfile> {
             ),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: _isEditing
-                  ? () {
-                      // Add function to handle user update here
-                    }
-                  : null,
-              child: Text(
-                'Save Changes',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
+              onPressed: () {
+                ref.watch(profileRemoteDataSourceProvider);
+              },
+              child: Text('Save Change'),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.resolveWith<Color>(
                   (Set<MaterialState> states) {
