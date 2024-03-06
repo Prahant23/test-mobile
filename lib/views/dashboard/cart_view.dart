@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vintuff_thrift/feature/cart/presentation/view_model/cart_view_model.dart';
 
 // Define a model for your products
 class Product {
@@ -15,7 +17,7 @@ class Product {
   });
 }
 
-class CartView extends StatelessWidget {
+class CartView extends ConsumerStatefulWidget {
   const CartView({Key? key}) : super(key: key);
 
   // Static list of products
@@ -31,15 +33,31 @@ class CartView extends StatelessWidget {
   ];
 
   @override
+  ConsumerState<CartView> createState() => _CartViewState();
+}
+
+class _CartViewState extends ConsumerState<CartView> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.watch(cartViewModelProvider.notifier).getcart();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final cartState = ref.watch(cartViewModelProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text('Shopping Cart'),
       ),
       body: ListView.builder(
-        itemCount: products.length,
+        itemCount: cartState.cartApiModel.length,
         itemBuilder: (context, index) {
-          final product = products[index];
+          // final product = CartView.products[index];
+          final product = cartState.cartApiModel[index];
           return Card(
             margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             elevation: 4,
@@ -52,25 +70,27 @@ class CartView extends StatelessWidget {
                 width: 80,
                 height: 80,
                 child: Image.network(
-                  product.imageUrl, // Image loaded from the internet
+                  product.productImg!, // Image loaded from the internet
                   fit: BoxFit.cover,
                 ),
               ),
               title: Text(
-                product.name,
+                product.productName!,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               subtitle: Text(
-                '\$${product.price.toStringAsFixed(2)}',
+                '\$${product.productPrice!.toStringAsFixed(2)}',
                 style: TextStyle(fontSize: 16),
               ),
               trailing: IconButton(
                 icon: Icon(Icons.delete),
                 onPressed: () {
-                  // Add to cart functionality here
+                  ref
+                      .read(cartViewModelProvider.notifier)
+                      .deleteFromCart(product.id!, context);
                 },
               ),
             ),

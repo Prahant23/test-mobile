@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vintuff_thrift/feature/auth/presentation/view/loginpage_view.dart';
+import 'package:vintuff_thrift/feature/cart/data/model/cart_api_model.dart';
+import 'package:vintuff_thrift/feature/cart/presentation/view_model/cart_view_model.dart';
 import 'package:vintuff_thrift/feature/product/presentation/view_model/product_viewmodel.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -15,14 +17,14 @@ class HomePage extends ConsumerStatefulWidget {
   @override
   ConsumerState<HomePage> createState() => _HomePageState();
 
-  static void addToCart(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Added to Cart successfully'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
+  // static void addToCart(BuildContext context) {
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       content: Text('Added to Cart successfully'),
+  //       duration: Duration(seconds: 2),
+  //     ),
+  //   );
+  // }
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
@@ -183,7 +185,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 SizedBox(height: 8),
                                 ElevatedButton(
                                   onPressed: () {
-                                    HomePage.addToCart(context);
+                                    CartApiModel cartApiModel = CartApiModel(
+                                        quantity: 1, productId: product.id);
+                                    ref
+                                        .watch(cartViewModelProvider.notifier)
+                                        .addToCart(cartApiModel, context);
                                   },
                                   child: Text('Add to Cart'),
                                 ),

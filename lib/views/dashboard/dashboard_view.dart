@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vintuff_thrift/feature/cart/presentation/view/cart_view.dart';
 import 'package:vintuff_thrift/views/dashboard/dashboard_home.dart';
 import 'package:vintuff_thrift/views/dashboard/dashboard_search.dart';
 import 'package:vintuff_thrift/views/dashboard/dashboard_profile.dart';
@@ -16,7 +17,7 @@ class _DashboardViewState extends State<DashboardView> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    CartView(),
+    const CartView(),
     const DashboardSearch(),
     const MyProfile(),
   ];

@@ -7,16 +7,19 @@ part 'cart_api_model.g.dart';
 @JsonSerializable()
 class CartApiModel extends Equatable {
   @JsonKey(name: '_id')
+  final String? id;
   final String? productId;
-  final String? quantity;
-  
-
-  CartApiModel({
-    this.productId,
-    required this.quantity,
-   
-  
-  });
+  final int? quantity;
+  final String? productImg;
+  final String? productName;
+  final double? productPrice;
+  CartApiModel(
+      {this.id,
+      this.productId,
+      this.quantity,
+      this.productImg,
+      this.productName,
+      this.productPrice});
 
   factory CartApiModel.fromJson(Map<String, dynamic> json) =>
       _$CartApiModelFromJson(json);
@@ -26,9 +29,12 @@ class CartApiModel extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props => [
+        id,
         productId,
         quantity,
-       
+        productImg,
+        productName,
+        productPrice,
       ];
 
   // Convert API model to domain entity
